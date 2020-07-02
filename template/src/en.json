@@ -1,0 +1,39 @@
+{
+  "general": {
+  },
+  "pages": {
+    "home": {
+      "title": "BlaBla Experience. Rethought",
+      "description": "A better way to do some nasty stuff",
+      "moreButton": "Explore",
+      "bottomSection": {
+        "heading": "Not confident yet?",
+        "button": "Just try it for free"
+      },
+      "keyBenefits": {
+        "title" : "Key Benefits",
+        "a11y": {
+          "title": "Accesible",
+          "description": "VoiceOver friendly",
+          "actionName": "Learn more"
+        },
+        "responsiveness": {
+          "title": "Responsive",
+          "description": "Have the best user experinece. No matter which device you are using.",
+          "actionName": "Learn more"
+        },
+        "simplicity": {
+          "title": "Simple",
+          "description": "No sand. Only pure gold",
+          "actionName": "Learn more"
+        }
+      }
+    },
+    "about": {
+      "title": "About"
+    },
+    "page404": {
+      "title": "Page not found"
+    }
+  }
+}
