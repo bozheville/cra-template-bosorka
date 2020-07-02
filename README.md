@@ -13,5 +13,3 @@ The goal is to have a template with a quick start, that allows bootstraping a pr
 - Testing environment of jest/enzyme
 - Custom hook for syncing with the URL
 - i18next for text organizing
-
-
