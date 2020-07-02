@@ -12,6 +12,7 @@ import PageDataContext from 'components/Page/PageContext';
 import customTheme from 'services/theme';
 import globalStyles from 'styled/global';
 
+const HomePage = React.lazy(() => import('pages/Home'));
 const Page404 = React.lazy(() => import('pages/Page404'));
 
 interface IApp {}
@@ -29,6 +30,7 @@ const App: React.FC<IApp> = () => {
             <Layout>
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
+                  <Route path="/" exact component={HomePage} />
                   <Route component={Page404} />
                 </Switch>
               </Suspense>
