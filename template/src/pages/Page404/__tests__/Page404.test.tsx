@@ -1,8 +1,11 @@
-import {
-  // mount,
-  // shallow
-} from 'enzyme';
+import React from 'react';
 
-describe('Page404 component', () => {
+import { renderWithRouter } from 'services/test-utils';
 
+import Page404 from '../Page404';
+
+describe('Page404 page', () => {
+  test('Page404 page renders', () => {
+    renderWithRouter(<Page404 />);
+  });
 });

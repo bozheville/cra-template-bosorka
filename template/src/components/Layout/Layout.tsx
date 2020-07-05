@@ -7,11 +7,12 @@ import Footer from '../Footer';
 import { ILayoutProps } from './types';
 
 const Layout: React.FC<ILayoutProps> = ({
+  menuItems,
   children
 }) => {
   return (
     <>
-      <Header />
+      <Header items={menuItems} />
       <Box
         as="section"
         flex="1 0 auto"

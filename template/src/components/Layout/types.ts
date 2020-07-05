@@ -1,1 +1,5 @@
-export interface ILayoutProps {}
+import { MenuItem } from 'types';
+
+export interface ILayoutProps {
+  menuItems: MenuItem[];
+}

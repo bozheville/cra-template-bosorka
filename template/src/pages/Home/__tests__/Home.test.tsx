@@ -1,8 +1,11 @@
-import {
-  // mount,
-  // shallow
-} from 'enzyme';
+import React from 'react';
 
-describe('Home component', () => {
+import { renderWithRouter } from 'services/test-utils';
 
+import Home from '../Home';
+
+describe('Home page', () => {
+  test('Home page renders', () => {
+    renderWithRouter(<Home />);
+  });
 });

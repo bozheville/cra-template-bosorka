@@ -2,7 +2,7 @@ import React, { Suspense, useMemo, useState } from 'react';
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import { Global } from '@emotion/core';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -10,6 +10,7 @@ import {
 import Layout from 'components/Layout';
 import PageDataContext from 'components/Page/PageContext';
 import customTheme from 'services/theme';
+import menuItems from 'services/get-menu-items';
 import globalStyles from 'styled/global';
 
 const AboutPage = React.lazy(() => import('pages/About'));
@@ -26,9 +27,9 @@ const App: React.FC<IApp> = () => {
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
-      <Router>
+      <BrowserRouter>
         <PageDataContext.Provider value={pageContextState}>
-            <Layout>
+            <Layout menuItems={menuItems}>
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                   <Route path="/" exact component={HomePage} />
@@ -38,7 +39,7 @@ const App: React.FC<IApp> = () => {
               </Suspense>
             </Layout>
         </PageDataContext.Provider>
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
