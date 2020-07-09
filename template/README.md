@@ -37,6 +37,36 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Add new component/page
+
+### Add new page
+
+```
+npm run add:page --name NewPage --path /new-page-path [--menu]
+```
+
+creates following files:
+- `./src/pages/NewPage/types.ts`
+- `./src/pages/NewPage/index.ts`
+- `./src/pages/NewPage/NewPage.container.tsx`
+- `./src/pages/NewPage/NewPage.tsx`
+- `./src/pages/NewPage/__tests__/NewPage.test.tsx`
+
+It also adds a page section in `./src/en.json`, adds a route under a Switch in `./src/pages/App.tsx`.
+Running a script with `--menu` argument, it also adds a menu item in `./src/services/menu-items.json`.
+
+### Add new component
+
+```
+npm run add:component --name NewComponent
+```
+
+creates following files:
+- `./src/components/NewComponent/types.ts`
+- `./src/components/NewComponent/index.ts`
+- `./src/components/NewComponent/NewComponent.tsx`
+- `./src/components/NewComponent/__tests__/NewComponent.test.tsx`
+
 ## Learn More
 
 - [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -51,4 +81,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 - [Deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-- [`npm run build` fails to minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [`yarn build` fails to minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+- [Deployment on heroku](https://github.com/mars/create-react-app-buildpack)

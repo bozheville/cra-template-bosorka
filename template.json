@@ -28,6 +28,10 @@
       "react-router-dom": "^5.2.0",
       "@types/react-router-dom": "^5.1.5",
       "@types/react-test-renderer": "^16.9.2"
+    },
+    "scripts": {
+      "add:component": "node ./scripts/add.mjs --type component",
+      "add:page": "node ./scripts/add.mjs --type page"
     }
   }
 }

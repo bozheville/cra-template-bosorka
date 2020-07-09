@@ -10,8 +10,11 @@ import {
 import Layout from 'components/Layout';
 import PageDataContext from 'components/Page/PageContext';
 import customTheme from 'services/theme';
-import menuItems from 'services/get-menu-items';
+import menuJson from 'services/menu-items.json';
 import globalStyles from 'styled/global';
+import { MenuItem } from 'types';
+
+const menuItems = menuJson as unknown as MenuItem[];
 
 const AboutPage = React.lazy(() => import('pages/About'));
 const HomePage = React.lazy(() => import('pages/Home'));

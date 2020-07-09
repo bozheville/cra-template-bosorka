@@ -1,6 +1,5 @@
 {
-  "general": {
-  },
+  "general": {},
   "pages": {
     "home": {
       "title": "BlaBla Experience. Rethought",
@@ -11,7 +10,7 @@
         "button": "Just try it for free"
       },
       "keyBenefits": {
-        "title" : "Key Benefits",
+        "title": "Key Benefits",
         "a11y": {
           "title": "Accesible",
           "description": "VoiceOver friendly",
