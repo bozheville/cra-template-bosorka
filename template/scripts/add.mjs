@@ -10,16 +10,26 @@ import {
 
 const [_0, _1, ...argv] = Array.from(process.argv);
 
-const argvString = argv.join(' ');
+const argvString = argv.join(' ')
+  .replace(/\s-[tnpm](?=\s|=|$)/g, (m) => {
+    switch (m){
+    case ' -t': return ' --type';
+    case ' -n': return ' --name';
+    case ' -p': return ' --path';
+    case ' -m': return ' --menu';
+    }
+  });
+
 let moduleType = null;
 let moduleName = null;
-let pagePath = null;
+let pagePaths = null;
 let addToMenu = null;
 
 try {
   moduleType = argvString.match(/--type(\s+|=)(\S+)/)[2];
   try {
-    pagePath = argvString.match(/--path(\s+|=)(\S+)/)[2];
+    pagePaths = argvString.match(/--path(\s+|=)(\S+)/)[2];
+    pagePaths = pagePaths.split(',');
   } catch(error) {
     console.error('"path" prop is required for page components')
     process.exit(1);
@@ -78,10 +88,23 @@ const addPage = (componentName) => {
   mkdirSync(`${componentPath}`);
   mkdirSync(`${componentPath}/__tests__`);
 
+  const params = Array.from(new Set(pagePaths.reduce((result, path) => {
+    const match = path.match(/:[^ /]+/g);
+
+    if (match) {
+      return [
+        ...result,
+        ...match.map(item => item.replace(':', ''))
+      ];
+    }
+
+    return result;
+  }, [])));
+
   const files = [
     {
       filename: `${componentPath}/types.ts`,
-      content: getTypesFile({ type: 'page', componentName })
+      content: getTypesFile({ type: 'page', componentName, params })
     },
     {
       filename: `${componentPath}/index.ts`,
@@ -89,7 +112,7 @@ const addPage = (componentName) => {
     },
     {
       filename: `${componentPath}/${componentName}.container.tsx`,
-      content: getContainerFile({ componentName }),
+      content: getContainerFile({ componentName, params }),
     },
     {
       filename: `${componentPath}/${componentName}.tsx`,
@@ -115,7 +138,7 @@ const addPage = (componentName) => {
   const app = readFileSync(appPath, {encoding:'utf8', flag:'r'})
       .replace(
         /(\s+)(?=<Route component={Page404} \/>)/,
-        `$1<Route path="${pagePath}" exact component={${componentName}Page} />$1`
+        `$1${pagePaths.map(path => `<Route path="${path}" exact component={${componentName}Page} />`).join('$1')}$1`
       )
       .replace(
         /(\s+)(?=const Page404)/,
@@ -128,11 +151,14 @@ const addPage = (componentName) => {
   if (addToMenu) {
     const menu = JSON.parse(readFileSync(menuPath, {encoding:'utf8', flag:'r'}));
 
-    menu.push({
-      title: componentName,
-      link: pagePath,
-    });
+    const pagePathsWithoutProps = pagePaths.filter(path => !/:/.test(path))
 
+    for (const pagePath of pagePathsWithoutProps) {
+      menu.push({
+        title: componentName,
+        link: pagePath,
+      });
+    }
 
     writeFileSync(menuPath, JSON.stringify(menu, null, 2) + '\n');
     console.log(`${menuPath} updated`);

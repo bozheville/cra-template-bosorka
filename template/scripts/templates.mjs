@@ -12,21 +12,32 @@ describe('${componentName} ${type}', () => {
 });
 `;
 
-export const getTypesFile = ({ type, componentName }) =>
-`export interface I${componentName}Props {}
-${type === 'page' ? `export interface I${componentName}ContainerProps {}\n` : ``}`;
+export const getTypesFile = ({ type, componentName, params = [] }) =>
+`${type === 'page' ? `import { RouteComponentProps } from 'react-router-dom';
+
+interface I${componentName}RouteProps {
+  ${params.map(param => `${param}: string;`).join('\n  ')}
+}
+
+export interface I${componentName}ContainerProps extends RouteComponentProps<I${componentName}RouteProps> {}
+
+` : ``}export interface I${componentName}Props {}
+`;
 
 export const getIndexFile = ({ type, componentName }) =>
 `export { default } from './${componentName}${type === 'page' ? '.container' : ''}';
 `;
 
-export const getContainerFile = ({ componentName }) =>
+export const getContainerFile = ({ componentName, params }) =>
 `import React from 'react';
 import { I${componentName}ContainerProps } from './types';
 import ${componentName} from './${componentName}';
 
 const ${componentName}Container: React.FC<I${componentName}ContainerProps> = ({
+  match,
 }) => {
+  const { ${params.join(', ')} } = match.params;
+
   return (
     <${componentName} />
   );
