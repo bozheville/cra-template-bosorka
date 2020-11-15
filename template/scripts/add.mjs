@@ -27,15 +27,18 @@ let addToMenu = null;
 
 try {
   moduleType = argvString.match(/--type(\s+|=)(\S+)/)[2];
-  try {
-    pagePaths = argvString.match(/--path(\s+|=)(\S+)/)[2];
-    pagePaths = pagePaths.split(',');
-  } catch(error) {
-    console.error('"path" prop is required for page components')
-    process.exit(1);
-  }
 
-  addToMenu = /--menu/.test(argvString);
+  if (moduleType === 'page') {
+    try {
+      pagePaths = argvString.match(/--path(\s+|=)(\S+)/)[2];
+      pagePaths = pagePaths.split(',');
+    } catch(error) {
+      console.error('"path" prop is required for page components')
+      process.exit(1);
+    }
+
+    addToMenu = /--menu/.test(argvString);
+  }
 } catch(err) {
   console.error('"type" prop is required')
   process.exit(1);
