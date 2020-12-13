@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Page from 'components/Page';
 import { IAboutProps } from './types';
-import { Heading } from '@chakra-ui/core';
+import { Heading } from '@chakra-ui/react';
 
 const About: React.FC<IAboutProps> = () => {
   const { t } = useTranslation('pages');

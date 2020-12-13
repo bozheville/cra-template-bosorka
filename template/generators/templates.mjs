@@ -50,7 +50,7 @@ export default ${componentName}Container;
 
 export const getComponentFile = ({ componentName }) =>
 `import React from 'react';
-// import {  } from '@chakra-ui/core';
+// import {  } from '@chakra-ui/react';
 import { I${componentName}Props } from './types';
 
 const ${componentName}: React.FC<I${componentName}Props> = ({
@@ -72,7 +72,7 @@ export const getPageFile = ({ componentName }) =>
 `import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-// import {  } from '@chakra-ui/core';
+// import {  } from '@chakra-ui/react';
 
 import { Page } from 'components';
 import { I${componentName}Props } from './types';

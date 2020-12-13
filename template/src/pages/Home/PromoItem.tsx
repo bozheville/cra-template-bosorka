@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Heading, Image, Text } from '@chakra-ui/core';
-import Button from 'components/Button';
+import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
 
 import { IPromoItemProps } from './types';
 

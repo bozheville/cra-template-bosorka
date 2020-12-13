@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
-import { Box } from '@chakra-ui/core';
+import { Box, Button } from '@chakra-ui/react';
 
-import Button from '../Button';
 import { IPaginationProps } from './types';
 
 const Pagination: React.FC<IPaginationProps> = ({

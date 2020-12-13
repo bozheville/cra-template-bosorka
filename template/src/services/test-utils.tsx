@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { Global } from '@emotion/core';
 
 import globalStyles from 'styled/global';
 import theme from './theme';
 
 export const CustomWrapper: React.FC<{}> = ({ children }) => (
-  <ThemeProvider theme={theme}>
+  <ChakraProvider theme={theme}>
     <CSSReset />
     <Global styles={globalStyles} />
     {children}
-  </ThemeProvider>
+  </ChakraProvider>
 );
 
 export const RouterWrapper: React.FC<{}> = ({ children }) => (

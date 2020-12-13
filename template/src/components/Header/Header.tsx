@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Flex } from '@chakra-ui/core';
-
-import Button from 'components/Button';
+import { Box, Button, Flex } from '@chakra-ui/react';
 
 import { IHeaderProps } from './types';
 import Container from '../Container';
@@ -19,7 +17,7 @@ const Header: React.FC<IHeaderProps> = ({
               as={Link}
               to="/"
               variant="link"
-              variantColor="gray"
+              colorScheme="gray"
             >
               Home
             </Button>
@@ -30,7 +28,7 @@ const Header: React.FC<IHeaderProps> = ({
                 as={Link}
                 to={item.link}
                 variant="link"
-                variantColor="gray"
+                colorScheme="gray"
               >
                 {item.title}
               </Button>

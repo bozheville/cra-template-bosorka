@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Box, Grid, Heading, Image, Text } from '@chakra-ui/core';
+import { Box, Button, Grid, Heading, Image, Text } from '@chakra-ui/react';
 
-import Button from 'components/Button';
 import Page from 'components/Page';
 
 import micdropSvg from './undraw_mic_drop_uuyg.svg';
@@ -46,7 +45,7 @@ const Home: React.FC<IHomeProps> = () => {
           <Button
             as={Link}
             to={mainLink}
-            variantColor="purple"
+            colorScheme="purple"
             size="lg"
             mt="1em"
           >
@@ -118,7 +117,7 @@ const Home: React.FC<IHomeProps> = () => {
         <Button
           as={Link}
           to={mainLink}
-          variantColor="purple"
+          colorScheme="purple"
           size="lg"
           mt="1em"
         >

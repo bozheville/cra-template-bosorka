@@ -1,5 +1,5 @@
 import React, { Suspense, useMemo, useState } from 'react';
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { Global } from '@emotion/core';
 import {
   BrowserRouter,
@@ -27,7 +27,7 @@ const App: React.FC<IApp> = () => {
 
   const pageContextState = useMemo(() => ({ title, setTitle }), [title, setTitle]);
   return (
-    <ThemeProvider theme={customTheme}>
+    <ChakraProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
       <BrowserRouter>
@@ -43,7 +43,7 @@ const App: React.FC<IApp> = () => {
             </Layout>
         </PageDataContext.Provider>
       </BrowserRouter>
-    </ThemeProvider>
+    </ChakraProvider>
   );
 };
 

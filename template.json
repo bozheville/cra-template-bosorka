@@ -11,11 +11,13 @@
       "typescript": "^4.0.3",
       "web-vitals": "^0.2.4",
 
-      "@chakra-ui/core": "^0.8.0",
+      "@chakra-ui/react": "^1.0.3",
       "@emotion/core": "^10.0.28",
+      "@emotion/react": "^11.1.2",
+      "@emotion/styled": "^11.0.0",
       "@emotion/types": "^0.7.0",
-      "@emotion/styled": "^10.0.27",
       "emotion-theming": "^10.0.27",
+      "framer-motion": "^2.9.5",
       "i18next": "^19.4.5",
       "@types/i18next": "^13.0.0",
       "query-string": "^6.12.1",
@@ -28,8 +30,8 @@
       "@types/react-router-dom": "^5.1.5"
     },
     "scripts": {
-      "add:component": "node ./scripts/add.mjs --type component",
-      "add:page": "node ./scripts/add.mjs --type page"
+      "add:component": "node ./generators/add.mjs --type component",
+      "add:page": "node ./generators/add.mjs --type page"
     }
   }
 }
